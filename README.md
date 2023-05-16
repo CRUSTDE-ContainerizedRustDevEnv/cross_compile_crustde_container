@@ -12,6 +12,17 @@
 Hashtags: #rustlang #buildtool #developmenttool #tutorial #docker #ssh #container #podman #Linux #OCI  
 My projects on Github are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).  
 
+## Containerized Rust development environment - CRDE
+
+We will repeat how to create a Containerized Rust development environment (CRDE). Things change over time and the old tutorials might be outdated.
+It is also good to start from scratch from time to time to avoid accumulating side-effects that we forget about. It is very easy to reset everything because we use containers.
+
+
+
+## Cross-compile
+
+We will cross compile to Linux, Windows, musl, WASI and WASM from our CRDE.
+
 
 
 
