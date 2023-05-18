@@ -4,6 +4,8 @@
         "buildtool",
         "CRDE",
         "developmenttool",
-        "rustlang"
+        "distro",
+        "rustlang",
+        "WASI"
     ]
 }
