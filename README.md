@@ -14,18 +14,26 @@ My projects on GitHub are more like a tutorial than a finished product: [bestia-
 
 ## Intro
 
-Welcome to bestia.dev !
-Learning Rust and Wasm programming and having fun.
-I just love programming !
+Welcome to bestia.dev !  
+Learning Rust and Wasm programming and having fun.  
+I just love programming !  
 
 I upgraded my Containerized Rust Development Environment (CRDE) to enable cross-compilation to Linux, Windows, musl, WASI and WASM.  
 Let's make a short tutorial on how it works!
 
-## Containerized Rust development environment - CRDE
+This project has also a youtube video tutorial. Watch it:
+<!-- markdownlint-disable MD033 -->
+[<img src="https://bestia.dev/youtube/cross_compile_rust_container.jpg?_" width="400px">](https://bestia.dev/youtube/cross_compile_rust_container.html)
+<!-- markdownlint-enable MD033 -->
 
-It is smart to start the development from scratch from time to time to avoid accumulating side effects that we forget about. Then the problem "but it works on my machine" arise. It is very easy to reset everything because we use containers.
+## But it works on my machine !
+
+It is smart to start the development from scratch from time to time to avoid accumulating side effects that we forget about. Then the problem "But it works on my machine!" arise. It is very easy to reset everything because we use containers and virtual machines.
+
+## Install Debian in WSL2 on Windows
+
 We will start on Win10 with enabled WSL2.  
-If exists, remove the Debian distro. Be careful to not lose any precious data!
+If exists, remove the Debian distro. Be careful to not lose any precious data!  
 We will install a fresh Debian distro in Powershell. It takes a minute.
 
 ```powershell
@@ -34,20 +42,30 @@ wsl --install Debian
 ```
 
 Open Debian bash, update and upgrade, then install curl and OpenSSH.
-Just for info: Instead of the classic ctrl+c and ctrl+v, to Copy and Paste inside the bash terminal I use ctrl+shift+c and ctrl+shift+v. Cumbersome, but similar.
 
 ```bash
+cat /etc/debian_version;
+   11.6
 sudo apt update;
 sudo apt upgrade;
 cat /etc/debian_version;
    11.7
 sudo apt install -y curl;
 sudo apt install -y openssh-client;
-# make a directory, go inside and download the first script
+```
+
+Just for info: Instead of the classic ctrl+c and ctrl+v, to Copy and Paste inside the bash terminal I use ctrl+shift+c and ctrl+shift+v.  
+Cumbersome, but similar.  
+
+## Download and run the first bash script
+
+Make a directory, go inside and download the first script.  
+
+```bash
 mkdir -p ~/rustprojects/docker_rust_development_install;
 cd ~/rustprojects/docker_rust_development_install;
 curl -Sf -L https://github.com/bestia-dev/docker_rust_development/raw/main/docker_rust_development_install/download_scripts.sh --output download_scripts.sh;
-# you can read the bash script, it only creates the directory structure, downloads scripts and suggests what script to run next
+# You can read the bash script, it only creates the directory structure, downloads scripts and suggests what script to run next.
 clear;
 cat download_scripts.sh;
 clear;
@@ -55,16 +73,89 @@ sh download_scripts.sh;
 # Read and follow the detailed instructions after every script.
 ```
 
-Inside the ssh directory you will need 2 keys, one to access Github and the second to access your web server virtual machine.
+## Import SSH keys and personal data
+
+Inside the ssh directory, you will need 2 keys, one to access Github and the second to access your web server virtual machine.
 You should already have these keys somewhere and you just need to copy them into the ssh folder.
 I will call these keys githubssh1 and webserverssh1, but you can have other names.
 Modify accordingly to your locations and run these commands.
 
+Now you can run the first script with 4 parameters.
+Change the parameters with your personal data. They are needed for the container.
+The files will be stored in the ssh directory for later use.  
+Then follow the instructions from the next script.
 
+## Install Podman and create rust_dev_pod
+
+Now you can install Podman and set up the keys rust_dev_pod_keys.
+Give a passphrase to the ssh keys and remember it, you will need it.
+
+When installing Podman and the setup will finish, you can create the pod rust_dev_pod.
+On the first run, it will download around 1.2 GB from DockerHub and store it in the cache for later use.
+After that, follow the detailed instructions.
+
+The bash script will create the rust_dev_pod.
+It contains Rust, cargo, rustc and VSCode development environment.
+All outbound network traffic from the container is restricted through the Squid firewall proxy.
+
+To start this 'pod' it is mandatory to run the bash script rust_dev_pod_after_reboot.
+
+```bash
+sh ~/rustprojects/docker_rust_development_install/rust_dev_pod_after_reboot.sh
+```
+
+Be sure to push your code to GitHub frequently because sometimes containers just stop working.
+
+## VSCode
+
+You can open VSCode directly on an existing project inside the container from the Linux host bash terminal.
+
+```bash
+code --remote ssh-remote+rust_dev_vscode_cnt /home/rustdevuser/rustprojects 
+```
+
+The fresh empty container works perfectly!
+
+## Compile to standard Linux executable (dynamically linked to glibc)
+
+We will now create a new simple rust project as a proof-of-concept.  
+We can compile it for Linux right away.
+
+```bash
+cargo auto build
+./target/debug/rust_hello upper world
+```
+
+Nothing new here. It works like a charm!
+
+## Cross-compile for Windows
+
+Now cross-compile to Windows. Just add the correct target option.
+If we need to do this frequently, add it to the automation tasks.
 
 ```bash
 cargo build --target x86_64-pc-windows-gnu
+```
 
+We are connected over ssh and we can download the exe file to Windows.
+On Windows, we can run the CLI in Powershell and it works!
+
+## Compile to standalone Linux executable with Musl
+
+If we want to compile and build a true standalone executable for Linux we need to explicitly use the Musl target and statically link to the Musl library.  
+That makes it perfect to run inside a scratch Linux OCI container without any dependencies.
+
+```bash
+cargo build --target x86_64-unknown-linux-musl
+```
+
+## Create an "application" container from scratch
+
+We will download the binary (from VSCode to Windows) and move it to the Debian in WSL where we will use Buildah to create a Linux Container image from scratch.
+Using Buildah is very simple. We can run commands step by step and check things in between.
+Later we can put these commands inside a bash script and it works perfectly.
+
+```bash
 buildah from \
 --name scratch_hello_world_img \
 scratch
@@ -82,35 +173,46 @@ buildah commit scratch_hello_world_img docker.io/bestiadev/scratch_hello_world_i
 # now run the container and executable
 
 podman run scratch_hello_world_img /rust_hello
-
+podman run scratch_hello_world_img /rust_hello upper world
 ```
+
+Then I use Podman to run the container. It works!
+
+## Cross-compile to WASI
+
+I will compile for the target wasi now and run it with the wasmtime wasi runtime.
 
 ```bash
-
+cargo build --target wasm32-wasi
+wasmtime ./target/wasm32-wasi/debug/rust_hello.wasm upper world
 ```
 
+Everything works!
 
+## Cross-compile to WASM in-browser
 
+WASM runs inside a browser as a library and I cannot use the exact CLI project. 
+I need just a few adjustments because of the user interface.
 
-We will repeat how to pull and run the Containerized Rust development environment (CRDE). Things change over time and the old tutorials might be outdated.
+I will use the 'cargo auto new_wasm' command to create a simple yet fully functional wasm program inside the browser.
 
+```bash
+cargo auto new_wasm rust_wasm_hello
+cargo auto build
+basic-http-server -a 0.0.0.0:4000 ./web_server_folder
+https://localhost:4000/rust_wasm_hello#upper/world
+```
 
+On purpose, the project is made very similar to the CLI we already know. It reads 2 arguments from the URL local hash fragment and interprets it in the same way as the CLI.  
+I then use the exact same Rust code for the project logic except for the user interface. The User interface is different and it is smart to isolate it in separate modules. So the logic can be reused.  
+The structure of the modules in the wasm project is made similar as possible to the CLI. There are some minor differences though.  
+The wasm program needs a basic web server and it then runs entirely inside the browser.
 
+## Outro
 
-
-
-
-
-
-
-
-## Cross-compile
-
-We will cross compile to Linux, Windows, musl, WASI and WASM from our CRDE.
-
-
-
-
+We have seen live how cross-compiling works inside the Containerized Rust Development environment. It works nicely!  
+This is all for today. Thank you for watching and see you next time.  
+Find my code and tutorials on bestia.dev or GitHub.
 
 ## Open-source and free as a beer
 
