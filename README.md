@@ -3,6 +3,7 @@
 **09. Cross-compile Rust to Linux, Windows, Musl container, WASI and WASM with OCI container (2023-05)**  
 ***version: 1.0  date: 2022-09-06 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cross_compile_rust_container)***  
 
+![status](https://img.shields.io/badge/tutorial-yellow) 
 [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/bestia-dev/cross_compile_rust_container/)
 [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/bestia-dev/cross_compile_rust_container/)
 
