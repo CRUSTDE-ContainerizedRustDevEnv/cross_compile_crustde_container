@@ -22,7 +22,7 @@ Welcome to bestia.dev !
 Learning Rust and Wasm programming and having fun.  
 I just love programming !  
 
-I upgraded my Containerized Rust Development Environment (CRDE) to enable cross-compilation to Linux, Windows, musl, WASI and WASM.  
+I upgraded my Containerized Rust Development Environment (CRUSTDE) to enable cross-compilation to Linux, Windows, musl, WASI and WASM.  
 Let's make a short tutorial on how it works!
 
 This project has also a youtube video tutorial. Watch it:
