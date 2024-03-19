@@ -7,6 +7,9 @@
 
  ![status](https://img.shields.io/badge/tutorial-yellow)
 
+ ![logo](https://raw.githubusercontent.com/CRUSTDE-Containerized-Rust-Dev-Env/CRUSTDE-Containerized-Rust-Dev-Env/main/images/crustde_250x250.png)
+ cross_compile_rust_container is a member of the [CRUSTDE-Containerized-Rust-Dev-Env](https://github.com/orgs/CRUSTDE-Containerized-Rust-Dev-Env/repositories?q=sort%3Aname-asc) project.
+
  [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/bestia-dev/cross_compile_rust_container/)
  [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/bestia-dev/cross_compile_rust_container/)
 
