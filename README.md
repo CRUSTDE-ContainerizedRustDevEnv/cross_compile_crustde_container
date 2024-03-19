@@ -3,17 +3,17 @@
 # cross_compile_rust_container
 
 **09. Cross-compile Rust to Linux, Windows, Musl container, WASI and WASM with OCI container (2023-05)**  
-***version: 1.0  date: 2022-09-06 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cross_compile_rust_container)***  
+***version: 1.0  date: 2022-09-06 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container)***  
 
  ![status](https://img.shields.io/badge/tutorial-yellow)
 
  ![logo](https://raw.githubusercontent.com/CRUSTDE-Containerized-Rust-Dev-Env/CRUSTDE-Containerized-Rust-Dev-Env/main/images/crustde_250x250.png)
  cross_compile_rust_container is a member of the [CRUSTDE-Containerized-Rust-Dev-Env](https://github.com/orgs/CRUSTDE-Containerized-Rust-Dev-Env/repositories?q=sort%3Aname-asc) project.
 
- [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/bestia-dev/cross_compile_rust_container/)
- [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/bestia-dev/cross_compile_rust_container/)
+ [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container/)
+ [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container/)
 
- [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/cross_compile_rust_container/blob/master/LICENSE)
+ [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container/blob/master/LICENSE)
  ![cross_compile_rust_container](https://bestia.dev/webpage_hit_counter/get_svg_image/1031674425.svg)
 
 Hashtags: #rustlang #buildtool #developmenttool #tutorial #docker #ssh #container #podman #Linux #OCI  
@@ -71,7 +71,7 @@ Make a directory, go inside and download the first script.
 ```bash
 mkdir -p ~/rustprojects/docker_rust_development_install;
 cd ~/rustprojects/docker_rust_development_install;
-curl -Sf -L https://github.com/bestia-dev/docker_rust_development/raw/main/docker_rust_development_install/download_scripts.sh --output download_scripts.sh;
+curl -Sf -L https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/docker_rust_development/raw/main/docker_rust_development_install/download_scripts.sh --output download_scripts.sh;
 # You can read the bash script, it only creates the directory structure, downloads scripts and suggests what script to run next.
 clear;
 cat download_scripts.sh;
@@ -170,7 +170,7 @@ scratch
 buildah config \
 --author=github.com/bestia-dev \
 --label name=scratch_hello_world_img \
---label source=github.com/bestia-dev/docker_rust_development \
+--label source=github.com/CRUSTDE-Containerized-Rust-Dev-Env/docker_rust_development \
 scratch_hello_world_img
 
 buildah copy scratch_hello_world_img  ~/rustprojects/rust_hello/musl/rust_hello /rust_hello
