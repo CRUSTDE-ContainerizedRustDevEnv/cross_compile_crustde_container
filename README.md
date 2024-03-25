@@ -1,20 +1,20 @@
 [//]: # (auto_md_to_doc_comments segment start A)
 
-# cross_compile_rust_container
+# cross_compile_crustde_container
 
 **09. Cross-compile Rust to Linux, Windows, Musl container, WASI and WASM with OCI container (2023-05)**  
-***version: 1.0  date: 2022-09-06 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container)***  
+***version: 1.0  date: 2022-09-06 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/CRUSTDE-Containerized-Rust-DevEnv/cross_compile_crustde_container)***  
 
  ![status](https://img.shields.io/badge/tutorial-yellow)
 
- ![logo](https://raw.githubusercontent.com/CRUSTDE-Containerized-Rust-Dev-Env/CRUSTDE-Containerized-Rust-Dev-Env/main/images/crustde_250x250.png)
- cross_compile_rust_container is a member of the [CRUSTDE-Containerized-Rust-Dev-Env](https://github.com/orgs/CRUSTDE-Containerized-Rust-Dev-Env/repositories?q=sort%3Aname-asc) project.
+ ![logo](https://raw.githubusercontent.com/CRUSTDE-Containerized-Rust-DevEnv/CRUSTDE-Containerized-Rust-DevEnv/main/images/crustde_250x250.png)
+ cross_compile_crustde_container is a member of the [CRUSTDE-Containerized-Rust-DevEnv](https://github.com/orgs/CRUSTDE-Containerized-Rust-DevEnv/repositories?q=sort%3Aname-asc) project.
 
- [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container/)
- [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container/)
+ [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/CRUSTDE-Containerized-Rust-DevEnv/cross_compile_crustde_container/)
+ [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/CRUSTDE-Containerized-Rust-DevEnv/cross_compile_crustde_container/)
 
- [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/cross_compile_rust_container/blob/master/LICENSE)
- ![cross_compile_rust_container](https://bestia.dev/webpage_hit_counter/get_svg_image/1031674425.svg)
+ [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CRUSTDE-Containerized-Rust-DevEnv/cross_compile_crustde_container/blob/master/LICENSE)
+ ![cross_compile_crustde_container](https://bestia.dev/webpage_hit_counter/get_svg_image/1031674425.svg)
 
 Hashtags: #rustlang #buildtool #developmenttool #tutorial #docker #ssh #container #podman #Linux #OCI  
 My projects on GitHub are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).  
@@ -30,7 +30,7 @@ Let's make a short tutorial on how it works!
 
 This project has also a youtube video tutorial. Watch it:
 <!-- markdownlint-disable MD033 -->
-[<img src="https://bestia.dev/youtube/cross_compile_rust_container.jpg?_" width="400px">](https://bestia.dev/youtube/cross_compile_rust_container.html)
+[<img src="https://bestia.dev/youtube/cross_compile_crustde_container.jpg?_" width="400px">](https://bestia.dev/youtube/cross_compile_crustde_container.html)
 <!-- markdownlint-enable MD033 -->
 
 ## But it works on my machine !
@@ -69,9 +69,9 @@ Cumbersome, but similar.
 Make a directory, go inside and download the first script.  
 
 ```bash
-mkdir -p ~/rustprojects/docker_rust_development_install;
-cd ~/rustprojects/docker_rust_development_install;
-curl -Sf -L https://github.com/CRUSTDE-Containerized-Rust-Dev-Env/docker_rust_development/raw/main/docker_rust_development_install/download_scripts.sh --output download_scripts.sh;
+mkdir -p ~/rustprojects/crustde_install;
+cd ~/rustprojects/crustde_install;
+curl -Sf -L https://github.com/CRUSTDE-Containerized-Rust-DevEnv/crustde_cnt_img_pod/raw/main/crustde_install/download_scripts.sh --output download_scripts.sh;
 # You can read the bash script, it only creates the directory structure, downloads scripts and suggests what script to run next.
 clear;
 cat download_scripts.sh;
@@ -92,23 +92,23 @@ Change the parameters with your personal data. They are needed for the container
 The files will be stored in the ssh directory for later use.  
 Then follow the instructions from the next script.
 
-## Install Podman and create rust_dev_pod
+## Install Podman and create crustde_pod
 
-Now you can install Podman and set up the keys rust_dev_pod_keys.
+Now you can install Podman and set up the keys crustde_pod_keys.
 Give a passphrase to the ssh keys and remember it, you will need it.
 
-When installing Podman and the setup will finish, you can create the pod rust_dev_pod.
+When installing Podman and the setup will finish, you can create the pod crustde_pod.
 On the first run, it will download around 1.2 GB from DockerHub and store it in the cache for later use.
 After that, follow the detailed instructions.
 
-The bash script will create the rust_dev_pod.
+The bash script will create the crustde_pod.
 It contains Rust, cargo, rustc and VSCode development environment.
 All outbound network traffic from the container is restricted through the Squid firewall proxy.
 
-To start this 'pod' it is mandatory to run the bash script rust_dev_pod_after_reboot.
+To start this 'pod' it is mandatory to run the bash script crustde_pod_after_reboot.
 
 ```bash
-sh ~/rustprojects/docker_rust_development_install/rust_dev_pod_after_reboot.sh
+sh ~/rustprojects/crustde_install/crustde_pod_after_reboot.sh
 ```
 
 Be sure to push your code to GitHub frequently because sometimes containers just stop working.
@@ -118,7 +118,7 @@ Be sure to push your code to GitHub frequently because sometimes containers just
 You can open VSCode directly on an existing project inside the container from the Linux host bash terminal.
 
 ```bash
-code --remote ssh-remote+rust_dev_vscode_cnt /home/rustdevuser/rustprojects 
+code --remote ssh-remote+crustde_vscode_cnt /home/rustdevuser/rustprojects 
 ```
 
 The fresh empty container works perfectly!
@@ -170,7 +170,7 @@ scratch
 buildah config \
 --author=github.com/bestia-dev \
 --label name=scratch_hello_world_img \
---label source=github.com/CRUSTDE-Containerized-Rust-Dev-Env/docker_rust_development \
+--label source=github.com/CRUSTDE-Containerized-Rust-DevEnv/crustde_cnt_img_pod \
 scratch_hello_world_img
 
 buildah copy scratch_hello_world_img  ~/rustprojects/rust_hello/musl/rust_hello /rust_hello
