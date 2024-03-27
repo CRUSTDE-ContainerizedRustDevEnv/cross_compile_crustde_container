@@ -33,9 +33,9 @@ This project has also a youtube video tutorial. Watch it:
 [<img src="https://bestia.dev/youtube/cross_compile_crustde_container.jpg?_" width="400px">](https://bestia.dev/youtube/cross_compile_crustde_container.html)
 <!-- markdownlint-enable MD033 -->
 
-## But it works on my machine !
+## But it works on my machine!
 
-It is smart to start the development from scratch from time to time to avoid accumulating side effects that we forget about. Then the problem "But it works on my machine!" arise. It is very easy to reset everything because we use containers and virtual machines.
+It is smart to start the development from scratch from time to time to avoid accumulating side effects that we forget about. Then the problem "But it works on my machine!" arises. It is very easy to reset everything because we use containers and virtual machines.
 
 ## Install Debian in WSL2 on Windows
 
