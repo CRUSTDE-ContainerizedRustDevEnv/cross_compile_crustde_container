@@ -10,8 +10,7 @@
  ![logo](https://raw.githubusercontent.com/CRUSTDE-ContainerizedRustDevEnv/CRUSTDE_Containerized_Rust_DevEnv/main/images/crustde_250x250.png)
  cross_compile_crustde_container is a member of the [CRUSTDE-ContainerizedRustDevEnv](https://github.com/orgs/CRUSTDE-ContainerizedRustDevEnv/repositories?q=sort%3Aname-asc) project.
 
- [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-932-green.svg)](https://github.com/CRUSTDE-ContainerizedRustDevEnv/cross_compile_crustde_container/)
- [![Lines in bash scripts](https://img.shields.io/badge/Lines_in_bash_scripts-1535-blue.svg)](https://github.com/CRUSTDE-ContainerizedRustDevEnv/cross_compile_crustde_container/)
+ [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-239-green.svg)](https://github.com/CRUSTDE-ContainerizedRustDevEnv/cross_compile_crustde_container/)
 
  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/CRUSTDE-ContainerizedRustDevEnv/cross_compile_crustde_container/blob/master/LICENSE)
  ![cross_compile_crustde_container](https://bestia.dev/webpage_hit_counter/get_svg_image/1031674425.svg)
