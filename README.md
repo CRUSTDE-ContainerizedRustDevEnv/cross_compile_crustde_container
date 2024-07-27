@@ -83,7 +83,7 @@ sh download_scripts.sh;
 
 Inside the ssh directory, you will need 2 keys, one to access Github and the second to access your web server virtual machine.
 You should already have these keys somewhere and you just need to copy them into the ssh folder.
-I will call these keys github_com_git_ssh_1 and bestia_dev_luciano_bestia_ssh_1, but you can have other names.
+I will call these keys github_com_bestia_dev_git_ssh_1 and bestia_dev_luciano_bestia_ssh_1, but you can have other names.
 Modify accordingly to your locations and run these commands.
 
 Now you can run the first script with 4 parameters.
