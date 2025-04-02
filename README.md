@@ -8,7 +8,7 @@
 
  ![status](https://img.shields.io/badge/tutorial-yellow)
 
- ![logo](https://raw.githubusercontent.com/CRUSTDE-ContainerizedRustDevEnv/CRUSTDE_Containerized_Rust_DevEnv/main/images/crustde_250x250.png)  
+ ![logo](https://raw.githubusercontent.com/CRUSTDE-ContainerizedRustDevEnv/.github/main/images/crustde_250x250.png)  
  cross_compile_crustde_container is a member of the [CRUSTDE-ContainerizedRustDevEnv](https://github.com/orgs/CRUSTDE-ContainerizedRustDevEnv/repositories?q=sort%3Aname-asc) project.
 
  [![Lines in md](https://img.shields.io/badge/Lines_in_markdown-239-green.svg)](https://github.com/CRUSTDE-ContainerizedRustDevEnv/cross_compile_crustde_container/)
